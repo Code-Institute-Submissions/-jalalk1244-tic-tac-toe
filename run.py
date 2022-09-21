@@ -71,8 +71,29 @@ def append_move_to_board(move):
     del available_moves()[move - 1]
 
 
-while ' ' in board[0] or ' ' in board[1] or ' ' in board[2]:
+def check_for_win():
+    '''
+    Check if the player has won either:
+     - horizontally
+     - vertically
+     - Diagonally
+    '''
+    global game_running
+
+    # Check for horizontal win
+    for i in range(3):
+        if board[i].count(current_player) == 3:
+            winner = current_player
+            print(f'\n{winner} has won!')
+            game_running = False
+            print_board()
+            break
+
+
+game_running = True
+while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
     print_board()
     t = available_moves()
     h = get_valid_user_move(t)
     append_move_to_board(h)
+    check_for_win()
