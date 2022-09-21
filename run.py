@@ -89,18 +89,18 @@ def check_for_win():
             game_running = False
             break
     # Check for vertical win
-    vertical_win_row_1 = []
-    vertical_win_row_2 = []
-    vertical_win_row_3 = []
-    for j in range(3):
-        vertical_win_row_1.append(board[j][0])
-        vertical_win_row_2.append(board[j][1])
-        vertical_win_row_3.append(board[j][2])
-    if vertical_win_row_1.count(current_player) == 3 or vertical_win_row_2.count(current_player) == 3 or vertical_win_row_3.count(current_player) == 3:
-        winner = current_player
-        print_board()
-        print(f'\n{winner} has won!')
-        game_running = False
+    vertical_win_row = [[], [], []]
+    for i in range(3):
+        for j in range(3):
+            vertical_win_row[i].append(board[j][i])
+
+    for i in range(3):
+        if vertical_win_row[i].count(current_player) == 3:
+            winner = current_player
+            print_board()
+            print(f'\n{winner} has won!')
+            game_running = False
+            break
     # Check for diagonal win
     diagonal_win_1 = []
     diagonal_win_2 = []
