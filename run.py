@@ -101,6 +101,21 @@ def check_for_win():
         print_board()
         print(f'\n{winner} has won!')
         game_running = False
+    # Check for diagonal win
+    diagonal_win_1 = []
+    diagonal_win_2 = []
+
+    j = 2
+    for i in range(3):
+        diagonal_win_1.append(board[i][i])
+        diagonal_win_2.append(board[j][i])
+        j -= 1
+
+    if diagonal_win_1.count(current_player) == 3 or diagonal_win_2.count(current_player) == 3:
+        winner = current_player
+        print_board()
+        print(f'\n{winner} has won!')
+        game_running = False
 
 
 game_running = True
