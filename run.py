@@ -32,25 +32,29 @@ def available_moves():
     return moves
 
 
-def get_valid_user_move():
+def get_valid_user_move(moves):
     '''
     Let the user pick a square
     Check if the square is in the board
     '''
-    num_range = [1, 2, 3, 4, 5, 6, 8, 9]
     is_square_valid = False
+    player_move = None
 
     while not is_square_valid:
-        picked_square = int(input('Pick a square between 1-9: '))
+        picked_square = input('Pick a square between 1-9: ')
 
-        if picked_square not in num_range:
-            print('Invalid input, Please pick a valid square!')
-            is_square_valid = False
-        else:
-            print('Valid number')
-            is_square_valid = True
+        try:
+            player_move = int(picked_square)
+            if player_move not in range(1, 10) or moves[player_move - 1] != ' ':
+                raise ValueError
+            else:
+                is_square_valid = True
+        except ValueError:
+            print('Invalid sqaure, please try again!')
+    return player_move
 
 
+print_board()
 t = available_moves()
-
-print(t)
+h = get_valid_user_move(t)
+print(h)
