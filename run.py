@@ -40,6 +40,7 @@ def get_valid_user_move(moves):
     '''
     is_square_valid = False
     player_move = None
+    turn = ['X' if current_letter == 'O' else 'O']
 
     while not is_square_valid:
         picked_square = input('Pick a square between 1-9: ')
@@ -51,6 +52,7 @@ def get_valid_user_move(moves):
             else:
                 is_square_valid = True
                 print(f'\n{current_letter} has moved to square {player_move}')
+                print(f'\nIt is {turn[0]}:s turn')
         except ValueError:
             print('Invalid sqaure, please try again!')
     return player_move
@@ -119,6 +121,9 @@ def check_for_win():
 
 
 def change_player():
+    '''
+    switch players
+    '''
     global current_letter
     if current_letter == 'X':
         current_letter = 'O'
