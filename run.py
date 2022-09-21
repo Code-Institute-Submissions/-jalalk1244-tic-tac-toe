@@ -50,6 +50,7 @@ def get_valid_user_move(moves):
                 raise ValueError
             else:
                 is_square_valid = True
+                print(f'\n{current_player} has moved to square {player_move}')
         except ValueError:
             print('Invalid sqaure, please try again!')
     return player_move
