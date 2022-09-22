@@ -4,6 +4,7 @@ board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
 WINNER = None
 current_letter = 'X'
+available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
 def print_board():
@@ -51,9 +52,11 @@ def get_valid_user_move(moves):
             if player_move not in range(1, 10) or moves[player_move - 1] != ' ':
                 raise ValueError
             else:
-                is_square_valid = True
+                moves.insert(player_move - 1, 'X')
+                available_squares.remove(player_move)
                 print(f'\n{current_letter} has moved to square {player_move}')
                 print(f'\nIt is {turn[0]}:s turn')
+                is_square_valid = True
         except ValueError:
             print('Invalid sqaure, please try again!')
     return player_move
@@ -76,49 +79,45 @@ def append_move_to_board(move):
 
 def check_for_win():
     '''
-    Check if the player has won either:
+    Check if the player has won:
      - horizontally
      - vertically
      - Diagonally
     '''
-    global game_running
-
-    # Check for horizontal win
-    for i in range(3):
-        if board[i].count(current_letter) == 3:
-            winner = current_letter
-            print_board()
-            print(f'\n{winner} has won!')
-            game_running = False
-            break
-    # Check for vertical win
+    global game_running, current_letter
     vertical_win_row = [[], [], []]
+    diagonal_win = [[], [], []]
+    j = 2
+
     for i in range(3):
+        diagonal_win[0].append(board[i][i])
+        diagonal_win[1].append(board[j][i])
+        j = j - 1
         for j in range(3):
             vertical_win_row[i].append(board[j][i])
 
     for i in range(3):
-        if vertical_win_row[i].count(current_letter) == 3:
+        # Check for horizontal win 
+        if board[i].count(current_letter) == 3:
+            winner = current_letter
+            print(f'\n{winner} has won!')
+            game_running = False
+            print_board()
+            break
+        # Check for vertical win
+        elif vertical_win_row[i].count(current_letter) == 3:
             winner = current_letter
             print_board()
             print(f'\n{winner} has won!')
             game_running = False
             break
-    # Check for diagonal win
-    diagonal_win_1 = []
-    diagonal_win_2 = []
-
-    j = 2
-    for i in range(3):
-        diagonal_win_1.append(board[i][i])
-        diagonal_win_2.append(board[j][i])
-        j -= 1
-
-    if diagonal_win_1.count(current_letter) == 3 or diagonal_win_2.count(current_letter) == 3:
-        winner = current_letter
-        print_board()
-        print(f'\n{winner} has won!')
-        game_running = False
+        # Check for diagonal win
+        elif diagonal_win[i].count(current_letter) == 3:
+            winner = current_letter
+            print_board()
+            print(f'\n{winner} has won!')
+            game_running = False
+            break  
 
 
 def change_player():
@@ -132,19 +131,13 @@ def change_player():
         current_letter = 'X'
 
 
-def computer_move(moves):
+def computer_move():
     '''
     Returns a random computer move from the available squares 
     '''
-    valid_move = False
-    while valid_move is False:
-        random_computer_move = random.randint(1, 9)
-        if moves[random_computer_move - 1] != ' ':
-            valid_move = False
-        else:
-            moves.insert(random_computer_move - 1, 'O')
-            valid_move = True
-    return random_computer_move
+    pc = random.choice(available_squares)
+    available_squares.remove(pc)
+    return pc
 
 
 game_running = True
@@ -156,7 +149,7 @@ while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
     check_for_win()
     change_player()
     print(moves)
-    cpu_move = computer_move(moves)
+    cpu_move = computer_move()
     append_move_to_board(cpu_move)
     check_for_win()
     change_player()
