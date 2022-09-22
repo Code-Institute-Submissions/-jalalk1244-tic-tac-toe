@@ -1,3 +1,4 @@
+import random
 
 board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
@@ -131,11 +132,31 @@ def change_player():
         current_letter = 'X'
 
 
+def computer_move(moves):
+    '''
+    Returns a random computer move from the available squares 
+    '''
+    valid_move = False
+    while valid_move is False:
+        random_computer_move = random.randint(1, 9)
+        if moves[random_computer_move - 1] != ' ':
+            valid_move = False
+        else:
+            moves.insert(random_computer_move - 1, 'O')
+            valid_move = True
+    return random_computer_move
+
+
 game_running = True
 while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
     print_board()
     t = available_moves()
     h = get_valid_user_move(t)
     append_move_to_board(h)
+    check_for_win()
+    change_player()
+    print(t)
+    cpu_move = computer_move(t)
+    append_move_to_board(cpu_move)
     check_for_win()
     change_player()
