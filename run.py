@@ -150,13 +150,13 @@ def computer_move(moves):
 game_running = True
 while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
     print_board()
-    t = available_moves()
-    h = get_valid_user_move(t)
-    append_move_to_board(h)
+    moves = available_moves()
+    user_move = get_valid_user_move(moves)
+    append_move_to_board(user_move)
     check_for_win()
     change_player()
-    print(t)
-    cpu_move = computer_move(t)
+    print(moves)
+    cpu_move = computer_move(moves)
     append_move_to_board(cpu_move)
     check_for_win()
     change_player()
