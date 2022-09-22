@@ -135,9 +135,12 @@ def computer_move():
     '''
     Returns a random computer move from the available squares 
     '''
-    pc = random.choice(available_squares)
-    available_squares.remove(pc)
-    return pc
+    try:
+        pc = random.choice(available_squares)
+        available_squares.remove(pc)
+        return pc
+    except IndexError:
+        print()
 
 
 game_running = True
@@ -150,6 +153,9 @@ while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
     change_player()
     print(moves)
     cpu_move = computer_move()
-    append_move_to_board(cpu_move)
+    try:
+        append_move_to_board(cpu_move)
+    except TypeError:
+        print()
     check_for_win()
     change_player()
