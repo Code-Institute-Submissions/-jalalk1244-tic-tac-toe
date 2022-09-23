@@ -121,6 +121,10 @@ def main():
         t.append_move_to_board(user_move)
         t.check_for_win()
         t.change_player()
+        cpu_move = ComputerPlayer().get_valid_computer_move(t)
+        t.append_move_to_board(cpu_move)
+        t.check_for_win()
+        t.change_player()
 
 
 main()
