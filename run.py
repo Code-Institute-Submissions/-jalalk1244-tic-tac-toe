@@ -106,6 +106,12 @@ class TicTacToe:
             self.current_letter = 'O'
         else:
             self.current_letter = 'X'
+    
+    def check_for_tie(self):
+        global game_running
+        if (' ' not in self.board[0] and ' ' not in self.board[1] and ' ' not in self.board[2]) and not self.check_for_win():
+            print('It is a tie!')
+            game_running = False
 
 
 game_running = True 
@@ -125,7 +131,7 @@ def main():
         try:
             t.append_move_to_board(cpu_move)
         except TypeError:
-            print() # This is for when all squares are taken and X makes the last move
+            print()  # This is for when all squares are taken and X makes the last move
         t.check_for_win()
         t.change_player()
 
