@@ -1,24 +1,5 @@
 
 
-def append_move_to_board(move):
-    '''
-    Add the player move to the board if it is a valid move
-    Remove the square from the avaible moves
-    '''
-    turn = ['X' if current_letter == 'O' else 'O']
-
-    if move >= 1 and move <= 3:
-        board[0][move-1] = current_letter
-    elif move >= 4 and move <= 6:
-        board[1][move-4] = current_letter
-    elif move >= 7 and move <= 9:
-        board[2][move-7] = current_letter
-    del available_moves()[move - 1]
-
-    print(f'{current_letter} has moved to square {move}\n')
-    print(f"It is {turn[0]}'s turn")
-
-
 def check_for_win():
     '''
     Check if the player has won:
@@ -117,7 +98,6 @@ class TicTacToe:
                 print('', self.board[row][column], end=' |')
         print('\n+---+---+---+')
     
-
     def available_moves(self):
         '''
         Returns all the available squares that the player can make a move on
@@ -129,3 +109,20 @@ class TicTacToe:
                 moves.append(self.board[row][column])
         return moves
 
+    def append_move_to_board(self, move):
+        '''
+        Add the player move to the board if it is a valid move
+        Remove the square from the avaible moves
+        '''
+        turn = ['X' if self.current_letter == 'O' else 'O']
+
+        if move >= 1 and move <= 3:
+            self.board[0][move-1] = self.current_letter
+        elif move >= 4 and move <= 6:
+            self.board[1][move-4] = self.current_letter
+        elif move >= 7 and move <= 9:
+            self.board[2][move-7] = self.current_letter
+        del self.available_moves()[move - 1]
+
+        print(f'{current_letter} has moved to square {move}\n')
+        print(f"It is {turn[0]}'s turn")
