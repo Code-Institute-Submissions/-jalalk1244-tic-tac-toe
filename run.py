@@ -114,3 +114,5 @@ game_running = True
 def main():
     global game_running
     t = TicTacToe()
+    while (' ' in t.board[0] or ' ' in t.board[1] or ' ' in t.board[2]) and game_running:
+        pass
