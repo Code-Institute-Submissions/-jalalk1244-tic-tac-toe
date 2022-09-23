@@ -119,5 +119,8 @@ def main():
         moves = t.available_moves()
         user_move = UserPlayer().get_valid_user_move(moves, t)
         t.append_move_to_board(user_move)
+        t.check_for_win()
+        t.change_player()
+
 
 main()
