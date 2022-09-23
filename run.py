@@ -56,8 +56,8 @@ def get_valid_user_move(moves):
             else:
                 moves.insert(player_move - 1, 'X')
                 available_squares.remove(player_move)
-                print(f'\n{current_letter} has moved to square {player_move}')
-                print(f'\nIt is {turn[0]}:s turn')
+                # print(f'\n{current_letter} has moved to square {player_move}')
+                # print(f'\nIt is {turn[0]}:s turn')
                 is_square_valid = True
         except ValueError:
             print('Invalid input, please try again!')
@@ -69,6 +69,7 @@ def append_move_to_board(move):
     Add the player move to the board if it is a valid move
     Remove the square from the avaible moves
     '''
+    turn = ['X' if current_letter == 'O' else 'O']
 
     if move >= 1 and move <= 3:
         board[0][move-1] = current_letter
@@ -77,6 +78,9 @@ def append_move_to_board(move):
     elif move >= 7 and move <= 9:
         board[2][move-7] = current_letter
     del available_moves()[move - 1]
+
+    print(f'{current_letter} has moved to square {move}\n')
+    print(f"It is {turn[0]}'s turn")
 
 
 def check_for_win():
