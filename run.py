@@ -49,8 +49,10 @@ def get_valid_user_move(moves):
 
         try:
             player_move = int(picked_square)
-            if player_move not in range(1, 10) or moves[player_move - 1] != ' ':
-                raise ValueError
+            if player_move not in range(1, 10):
+                print('You can only pick squares between 1-9. Please try again!')
+            elif moves[player_move - 1] != ' ':
+                print('The square is already taken, choose another one.')
             else:
                 moves.insert(player_move - 1, 'X')
                 available_squares.remove(player_move)
@@ -58,7 +60,7 @@ def get_valid_user_move(moves):
                 print(f'\nIt is {turn[0]}:s turn')
                 is_square_valid = True
         except ValueError:
-            print('Invalid sqaure, please try again!')
+            print('Invalid input, please try again!')
     return player_move
 
 
@@ -117,7 +119,7 @@ def check_for_win():
             print_board()
             print(f'\n{winner} has won!')
             game_running = False
-            break  
+            break
 
 
 def change_player():
