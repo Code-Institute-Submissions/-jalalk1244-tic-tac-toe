@@ -122,7 +122,10 @@ def main():
         t.check_for_win()
         t.change_player()
         cpu_move = ComputerPlayer().get_valid_computer_move(t)
-        t.append_move_to_board(cpu_move)
+        try:
+            t.append_move_to_board(cpu_move)
+        except TypeError:
+            print() # This is for when all squares are taken and X makes the last move
         t.check_for_win()
         t.change_player()
 
