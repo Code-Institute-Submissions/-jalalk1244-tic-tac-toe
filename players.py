@@ -1,3 +1,7 @@
+'''
+The module with the player classes
+'''
+
 import random
 
 
@@ -7,7 +11,7 @@ class ComputerPlayer:
     '''
     def get_valid_computer_move(self, game):
         '''
-        Returns a random computer move from the available squares 
+        Returns a random computer move from the available squares
         '''
         try:
             pc = random.choice(game.available_squares)
