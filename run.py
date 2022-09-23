@@ -1,18 +1,5 @@
 
 
-
-
-def available_moves():
-    '''
-    Returns all the available squares that the player can make a move on
-    '''
-    moves = []
-
-    for row in range(3):
-        for column in range(3):
-            moves.append(board[row][column])
-    return moves
-
 def append_move_to_board(move):
     '''
     Add the player move to the board if it is a valid move
@@ -129,3 +116,16 @@ class TicTacToe:
             for column in range(self.columns):
                 print('', self.board[row][column], end=' |')
         print('\n+---+---+---+')
+    
+
+    def available_moves(self):
+        '''
+        Returns all the available squares that the player can make a move on
+        '''
+        moves = []
+
+        for row in range(3):
+            for column in range(3):
+                moves.append(self.board[row][column])
+        return moves
+
