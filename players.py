@@ -5,7 +5,7 @@ class ComputerPlayer:
     '''
     A class to represent the computer player
     '''
-    def get_valid_computer_move(game):
+    def get_valid_computer_move(self, game):
         '''
         Returns a random computer move from the available squares 
         '''
