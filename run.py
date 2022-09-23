@@ -107,3 +107,10 @@ class TicTacToe:
         else:
             self.current_letter = 'X'
 
+
+game_running = True 
+
+
+def main():
+    global game_running
+    t = TicTacToe()
