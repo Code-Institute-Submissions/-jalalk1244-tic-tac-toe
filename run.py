@@ -1,6 +1,7 @@
 '''
 The module that runs the program
 '''
+from players import ComputerPlayer, UserPlayer
 
 
 class TicTacToe:
