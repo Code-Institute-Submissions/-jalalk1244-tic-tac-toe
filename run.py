@@ -1,25 +1,4 @@
 
-
-
-
-game_running = True
-while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
-    print_board()
-    moves = available_moves()
-    user_move = get_valid_user_move(moves)
-    append_move_to_board(user_move)
-    check_for_win()
-    change_player()
-    print(moves)
-    cpu_move = computer_move()
-    try:
-        append_move_to_board(cpu_move)
-    except TypeError:
-        print()
-    check_for_win()
-    change_player()
-
-
 class TicTacToe:
     '''
     The tic tac toe game
@@ -69,10 +48,8 @@ class TicTacToe:
             self.board[2][move-7] = self.current_letter
         del self.available_moves()[move - 1]
 
-        print(f'{current_letter} has moved to square {move}\n')
+        print(f'{self.current_letter} has moved to square {move}\n')
         print(f"It is {turn[0]}'s turn")
-
-
 
     def check_for_win(self):
         '''
