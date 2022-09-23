@@ -26,7 +26,7 @@ class TicTacToe:
             for column in range(self.columns):
                 print('', self.board[row][column], end=' |')
         print('\n+---+---+---+')
-    
+
     def available_moves(self):
         '''
         Returns all the available squares that the player can make a move on
@@ -76,7 +76,7 @@ class TicTacToe:
                 vertical_win_row[i].append(self.board[j][i])
 
         for i in range(3):
-            # Check for horizontal win 
+            # Check for horizontal win
             if self.board[i].count(self.current_letter) == 3:
                 winner = self.current_letter
                 print(f'\n{winner} has won!')
@@ -97,7 +97,7 @@ class TicTacToe:
                 print(f'\n{winner} has won!')
                 game_running = False
                 break
-    
+
     def change_player(self):
         '''
         switch players
@@ -106,7 +106,7 @@ class TicTacToe:
             self.current_letter = 'O'
         else:
             self.current_letter = 'X'
-    
+
     def check_for_tie(self):
         global game_running
         if (' ' not in self.board[0] and ' ' not in self.board[1] and ' ' not in self.board[2]) and not self.check_for_win():
@@ -114,11 +114,10 @@ class TicTacToe:
             game_running = False
 
 
-game_running = True 
+game_running = True
 
 
 def main():
-    global game_running
     t = TicTacToe()
     while (' ' in t.board[0] or ' ' in t.board[1] or ' ' in t.board[2]) and game_running:
         t.print_board()
