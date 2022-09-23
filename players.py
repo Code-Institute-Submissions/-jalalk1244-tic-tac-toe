@@ -22,7 +22,7 @@ class UserPlayer:
     A class for the user player
     '''
 
-    def get_valid_user_move(moves):
+    def get_valid_user_move(moves, game):
     '''
     Let the user pick a square
     Check if the square is in the game board
@@ -42,7 +42,7 @@ class UserPlayer:
                 print('The square is already taken, choose another one.')
             else:
                 moves.insert(player_move - 1, 'X')
-                available_squares.remove(player_move)
+                game.available_squares.remove(player_move)
                 # print(f'\n{current_letter} has moved to square {player_move}')
                 # print(f'\nIt is {turn[0]}:s turn')
                 is_square_valid = True
