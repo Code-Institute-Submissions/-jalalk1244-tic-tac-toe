@@ -115,4 +115,9 @@ def main():
     global game_running
     t = TicTacToe()
     while (' ' in t.board[0] or ' ' in t.board[1] or ' ' in t.board[2]) and game_running:
-        pass
+        t.print_board()
+        moves = t.available_moves()
+        user_move = UserPlayer().get_valid_user_move(moves, t)
+        t.append_move_to_board(user_move)
+
+main()

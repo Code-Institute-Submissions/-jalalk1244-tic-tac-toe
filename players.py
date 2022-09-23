@@ -22,14 +22,14 @@ class UserPlayer:
     A class for the user player
     '''
 
-    def get_valid_user_move(moves, game):
+    def get_valid_user_move(self, moves, game):
         '''
         Let the user pick a square
         Check if the square is in the game board
         '''
         is_square_valid = False
         player_move = None
-        turn = ['X' if current_letter == 'O' else 'O']
+        # turn = ['X' if current_letter == 'O' else 'O']
 
         while not is_square_valid:
             picked_square = input('Pick a square between 1-9: ')
