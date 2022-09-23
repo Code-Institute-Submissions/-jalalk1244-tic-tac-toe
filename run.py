@@ -1,18 +1,5 @@
 
-def print_board():
-    '''
-    Print the tic tac toe game board
-    '''
 
-    rows = 3
-    columns = 3
-
-    for row in range(rows):
-        print('\n+---+---+---+')
-        print('|', end='')
-        for column in range(columns):
-            print('', board[row][column], end=' |')
-    print('\n+---+---+---+')
 
 
 def available_moves():
@@ -127,7 +114,18 @@ class TicTacToe:
 
     def __init__(self):
         self.board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
-        self.column = 3
+        self.columns = 3
         self.rows = 3
         self.current_letter = 'X'
         self. available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    def print_board(self):
+        '''
+        Print the tic tac toe game board
+        '''
+        for row in range(self.rows):
+            print('\n+---+---+---+')
+            print('|', end='')
+            for column in range(self.columns):
+                print('', self.board[row][column], end=' |')
+        print('\n+---+---+---+')
