@@ -1,46 +1,5 @@
 
 
-def check_for_win():
-    '''
-    Check if the player has won:
-     - horizontally
-     - vertically
-     - Diagonally
-    '''
-    global game_running, current_letter
-    vertical_win_row = [[], [], []]
-    diagonal_win = [[], [], []]
-    j = 2
-
-    for i in range(3):
-        diagonal_win[0].append(board[i][i])
-        diagonal_win[1].append(board[j][i])
-        j = j - 1
-        for j in range(3):
-            vertical_win_row[i].append(board[j][i])
-
-    for i in range(3):
-        # Check for horizontal win 
-        if board[i].count(current_letter) == 3:
-            winner = current_letter
-            print(f'\n{winner} has won!')
-            game_running = False
-            print_board()
-            break
-        # Check for vertical win
-        elif vertical_win_row[i].count(current_letter) == 3:
-            winner = current_letter
-            print_board()
-            print(f'\n{winner} has won!')
-            game_running = False
-            break
-        # Check for diagonal win
-        elif diagonal_win[i].count(current_letter) == 3:
-            winner = current_letter
-            print_board()
-            print(f'\n{winner} has won!')
-            game_running = False
-            break
 
 
 def change_player():
@@ -126,3 +85,46 @@ class TicTacToe:
 
         print(f'{current_letter} has moved to square {move}\n')
         print(f"It is {turn[0]}'s turn")
+
+
+    def check_for_win():
+        '''
+        Check if the player has won:
+        - horizontally
+        - vertically
+        - Diagonally
+        '''
+        global game_running
+        vertical_win_row = [[], [], []]
+        diagonal_win = [[], [], []]
+        j = 2
+
+        for i in range(3):
+            diagonal_win[0].append(board[i][i])
+            diagonal_win[1].append(board[j][i])
+            j = j - 1
+            for j in range(3):
+                vertical_win_row[i].append(board[j][i])
+
+        for i in range(3):
+            # Check for horizontal win 
+            if board[i].count(current_letter) == 3:
+                winner = current_letter
+                print(f'\n{winner} has won!')
+                game_running = False
+                print_board()
+                break
+            # Check for vertical win
+            elif vertical_win_row[i].count(current_letter) == 3:
+                winner = current_letter
+                print_board()
+                print(f'\n{winner} has won!')
+                game_running = False
+                break
+            # Check for diagonal win
+            elif diagonal_win[i].count(current_letter) == 3:
+                winner = current_letter
+                print_board()
+                print(f'\n{winner} has won!')
+                game_running = False
+                break
