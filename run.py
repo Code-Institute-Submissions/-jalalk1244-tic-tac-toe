@@ -2,20 +2,6 @@
 
 
 
-def change_player():
-    '''
-    switch players
-    '''
-    global current_letter
-    if current_letter == 'X':
-        current_letter = 'O'
-    else:
-        current_letter = 'X'
-
-
-
-
-
 game_running = True
 while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
     print_board()
@@ -129,3 +115,13 @@ class TicTacToe:
                 print(f'\n{winner} has won!')
                 game_running = False
                 break
+    
+    def change_player(self):
+        '''
+        switch players
+        '''
+        if self.current_letter == 'X':
+            self.current_letter = 'O'
+        else:
+            self.current_letter = 'X'
+
