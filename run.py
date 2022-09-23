@@ -87,7 +87,8 @@ class TicTacToe:
         print(f"It is {turn[0]}'s turn")
 
 
-    def check_for_win():
+
+    def check_for_win(self):
         '''
         Check if the player has won:
         - horizontally
@@ -100,31 +101,31 @@ class TicTacToe:
         j = 2
 
         for i in range(3):
-            diagonal_win[0].append(board[i][i])
-            diagonal_win[1].append(board[j][i])
+            diagonal_win[0].append(self.board[i][i])
+            diagonal_win[1].append(self.board[j][i])
             j = j - 1
             for j in range(3):
-                vertical_win_row[i].append(board[j][i])
+                vertical_win_row[i].append(self.board[j][i])
 
         for i in range(3):
             # Check for horizontal win 
-            if board[i].count(current_letter) == 3:
-                winner = current_letter
+            if self.board[i].count(self.current_letter) == 3:
+                winner = self.current_letter
                 print(f'\n{winner} has won!')
                 game_running = False
-                print_board()
+                self.print_board()
                 break
             # Check for vertical win
-            elif vertical_win_row[i].count(current_letter) == 3:
-                winner = current_letter
-                print_board()
+            elif vertical_win_row[i].count(self.current_letter) == 3:
+                winner = self.current_letter
+                self.print_board()
                 print(f'\n{winner} has won!')
                 game_running = False
                 break
             # Check for diagonal win
-            elif diagonal_win[i].count(current_letter) == 3:
-                winner = current_letter
-                print_board()
+            elif diagonal_win[i].count(self.current_letter) == 3:
+                winner = self.current_letter
+                self.print_board()
                 print(f'\n{winner} has won!')
                 game_running = False
                 break
