@@ -1,11 +1,3 @@
-import random
-
-board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
-
-WINNER = None
-current_letter = 'X'
-available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
 
 def print_board():
     '''
@@ -127,7 +119,15 @@ while (' ' in board[0] or ' ' in board[1] or ' ' in board[2]) and game_running:
     check_for_win()
     change_player()
 
+
 class TicTacToe:
     '''
     The tic tac toe game
     '''
+
+    def __init__(self):
+        self.board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+        self.column = 3
+        self.rows = 3
+        self.current_letter = 'X'
+        self. available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
