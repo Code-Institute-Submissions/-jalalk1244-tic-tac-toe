@@ -1,6 +1,9 @@
-
+import random
 
 class ComputerPlayer:
+    '''
+    A class to represent the computer player
+    '''
     def computer_move():
         '''
         Returns a random computer move from the available squares 
