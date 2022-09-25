@@ -112,6 +112,26 @@ class TicTacToe:
             game_running = False
 
 
+    def play_again(self):
+        global game_running
+        is_answer_valid = False
+        while is_answer_valid == False:
+            answer = input('Do you want to play again? (yes/no): ').lower()
+            if answer == 'yes':
+                is_answer_valid = True
+                game_running = True
+                for i in range(3):
+                    for j in range(3):
+                        self.board[i][j] = ' '
+                self.available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            elif answer == 'no':
+                is_answer_valid = True
+                game_running = False
+            else:
+                is_answer_valid = False
+                print('Please enter "yes" or "no"')
+
+
 game_running = True
 
 
