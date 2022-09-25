@@ -14,6 +14,7 @@ class TicTacToe:
         self.board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
         self.columns = 3
         self.rows = 3
+        self.winner = None
         self.current_letter = messages['x-letter']
         self. available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -65,7 +66,7 @@ class TicTacToe:
         - Diagonally
         '''
         global game_running
-        winner = None
+        # self.winner = None
         vertical_win_row = [[], [], []]
         diagonal_win = [[], [], []]
         j = 2
@@ -80,20 +81,20 @@ class TicTacToe:
         for i in range(3):
             # Check for horizontal win
             if self.board[i].count(self.current_letter) == 3:
-                winner = self.current_letter
+                self.winner = self.current_letter
                 break
             # Check for vertical win
             elif vertical_win_row[i].count(self.current_letter) == 3:
-                winner = self.current_letter
+                self.winner = self.current_letter
                 break
             # Check for diagonal win
             elif diagonal_win[i].count(self.current_letter) == 3:
-                winner = self.current_letter
+                self.winner = self.current_letter
                 break
 
-        if winner != None:
+        if self.winner != None:
             self.print_board()
-            print(f'{gb}\n{winner} has won!{bb}')
+            print(f'{gb}\n{self.winner} has won!{bb}')
             self.play_again()
 
     def change_player(self):
@@ -153,6 +154,9 @@ def main():
         user_move = UserPlayer().get_valid_user_move(moves, t)
         t.append_move_to_board(user_move)
         t.check_for_win()
+        if t.winner != None:
+            t.winner = None
+            continue
         t.change_player()
         cpu_move = ComputerPlayer().get_valid_computer_move(t)
         try:
