@@ -65,6 +65,7 @@ class TicTacToe:
         - Diagonally
         '''
         global game_running
+        winner = None
         vertical_win_row = [[], [], []]
         diagonal_win = [[], [], []]
         j = 2
@@ -73,31 +74,27 @@ class TicTacToe:
             diagonal_win[0].append(self.board[i][i])
             diagonal_win[1].append(self.board[j][i])
             j = j - 1
-            for j in range(3):
-                vertical_win_row[i].append(self.board[j][i])
+            for k in range(3):
+                vertical_win_row[i].append(self.board[k][i])
 
         for i in range(3):
             # Check for horizontal win
             if self.board[i].count(self.current_letter) == 3:
                 winner = self.current_letter
-                print(f'{gb}\n{winner} has won!{bb}')
-                game_running = False
-                self.print_board()
                 break
             # Check for vertical win
             elif vertical_win_row[i].count(self.current_letter) == 3:
                 winner = self.current_letter
-                self.print_board()
-                print(f'{gb}\n{winner} has won!{bb}')
-                game_running = False
                 break
             # Check for diagonal win
             elif diagonal_win[i].count(self.current_letter) == 3:
                 winner = self.current_letter
-                self.print_board()
-                print(f'{gb}\n{winner} has won!{bb}')
-                game_running = False
                 break
+
+        if winner != None:
+            self.print_board()
+            print(f'{gb}\n{winner} has won!{bb}')
+            game_running = False
 
     def change_player(self):
         '''
