@@ -21,8 +21,9 @@ COLORS = {
     "cyan": "\u001b[36m",
     "white": "\u001b[37m",
     "yellow-background": "\u001b[43m",
-    "black-background": "\u001b[40m",
+    "black-background":"\u001b[0m",
     "cyan-background": "\u001b[46;1m",
+    'green-background': '\u001b[42m',
     "bold": "\u001b[1m"
 }
 
@@ -40,6 +41,8 @@ y = COLORS["yellow"]
 ly = COLORS["light-yellow"]
 w = COLORS["white"]
 b = COLORS['blue']
+gb = COLORS['green-background']
+bb = COLORS['black-background']
 bold = COLORS["bold"]
 
 welcome_message = f'''{c}

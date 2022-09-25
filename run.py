@@ -2,7 +2,7 @@
 The module that runs the program
 '''
 from players import ComputerPlayer, UserPlayer
-from visuals import messages
+from visuals import messages, gb, bb
 
 
 class TicTacToe:
@@ -80,7 +80,7 @@ class TicTacToe:
             # Check for horizontal win
             if self.board[i].count(self.current_letter) == 3:
                 winner = self.current_letter
-                print(f'\n{winner} has won!')
+                print(f'{gb}\n{winner} has won!{bb}')
                 game_running = False
                 self.print_board()
                 break
@@ -88,14 +88,14 @@ class TicTacToe:
             elif vertical_win_row[i].count(self.current_letter) == 3:
                 winner = self.current_letter
                 self.print_board()
-                print(f'\n{winner} has won!')
+                print(f'{gb}\n{winner} has won!{bb}')
                 game_running = False
                 break
             # Check for diagonal win
             elif diagonal_win[i].count(self.current_letter) == 3:
                 winner = self.current_letter
                 self.print_board()
-                print(f'\n{winner} has won!')
+                print(f'{gb}\n{winner} has won!{bb}')
                 game_running = False
                 break
 
