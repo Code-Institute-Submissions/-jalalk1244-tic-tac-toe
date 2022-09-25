@@ -15,6 +15,7 @@ COLORS = {
     "red": "\u001b[31;1m",
     "green": "\u001b[32m",
     "yellow": "\u001b[33;1m",
+    "light-yellow": "\u001b[33m",
     "blue": "\u001b[34;1m",
     "magenta": "\u001b[35m",
     "cyan": "\u001b[36m",
@@ -22,6 +23,7 @@ COLORS = {
     "yellow-background": "\u001b[43m",
     "black-background": "\u001b[40m",
     "cyan-background": "\u001b[46;1m",
+    "bold": "\u001b[1m"
 }
 
 
@@ -35,7 +37,10 @@ r = COLORS["red"]
 m = COLORS["magenta"]
 c = COLORS["cyan"]
 y = COLORS["yellow"]
+ly = COLORS["light-yellow"]
 w = COLORS["white"]
+b = COLORS['blue']
+bold = COLORS["bold"]
 
 welcome_message = f'''{c}
  __          __  _                               _        {y}
@@ -55,3 +60,20 @@ tic_tac_toe = f'''{c}
     |_|  |_|\___| {y}   |_|\__,_|\___| {m}   |_|\___/ \___|{c}                                              
  {w}                                                    
 '''
+
+# The bord colors
+board_line = f'\n{b}+{m}---{b}+{m}---{b}+{m}---{b}+{w}'
+board_side = f'{m}|{w}'
+
+# The player letter colors
+x_player = f'{c}X{w}'
+o_player = f'{ly}O{w}'
+
+messages = {
+  'welcome': welcome_message,
+  'TTT': tic_tac_toe,
+  "board-line": board_line,
+  'side-line': board_side,
+  'x-letter': x_player,
+  'o-letter': o_player
+}

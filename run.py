@@ -2,7 +2,7 @@
 The module that runs the program
 '''
 from players import ComputerPlayer, UserPlayer
-from visuals import welcome_message, tic_tac_toe
+from visuals import messages
 
 
 class TicTacToe:
@@ -14,7 +14,7 @@ class TicTacToe:
         self.board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
         self.columns = 3
         self.rows = 3
-        self.current_letter = 'X'
+        self.current_letter = messages['x-letter']
         self. available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     def print_board(self):
@@ -22,11 +22,11 @@ class TicTacToe:
         Print the tic tac toe game board
         '''
         for row in range(self.rows):
-            print('\n+---+---+---+')
-            print('|', end='')
+            print(messages['board-line'])
+            print(messages['side-line'], end='')
             for column in range(self.columns):
-                print('', self.board[row][column], end=' |')
-        print('\n+---+---+---+')
+                print('', self.board[row][column], end=f' {messages["side-line"]}')
+        print(messages['board-line'])
 
     def available_moves(self):
         '''
@@ -44,7 +44,7 @@ class TicTacToe:
         Add the player move to the board if it is a valid move
         Remove the square from the avaible moves
         '''
-        turn = ['X' if self.current_letter == 'O' else 'O']
+        turn = [messages['x-letter'] if self.current_letter == messages['x-letter'] else messages['x-letter']]
 
         if move >= 1 and move <= 3:
             self.board[0][move-1] = self.current_letter
@@ -103,10 +103,10 @@ class TicTacToe:
         '''
         switch players
         '''
-        if self.current_letter == 'X':
-            self.current_letter = 'O'
+        if self.current_letter == messages['x-letter']:
+            self.current_letter = messages['o-letter']
         else:
-            self.current_letter = 'X'
+            self.current_letter = messages['x-letter']
 
     def check_for_tie(self):
         global game_running
@@ -120,8 +120,8 @@ game_running = True
 
 def main():
     # Print the welcome header
-    print(welcome_message)
-    print(tic_tac_toe)
+    print(messages['welcome'])
+    print(messages['TTT'])
 
     # Start the game
     t = TicTacToe()
