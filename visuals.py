@@ -31,3 +31,29 @@ def color_text(text):
     for color in COLORS:
         text = text.replace("[[" + color + "]]", COLORS[color])
     return text
+
+# Representing colors with thier firsrt letter
+r = COLORS["red"]
+m = COLORS["magenta"]
+c = COLORS["cyan"]
+y = COLORS["yellow"]
+w = COLORS["white"]
+
+welcome_message = f'''{c}
+ __          __  _                            _        {y}
+ \ \        / / | |                          | |       {m}
+  \ \  /\  / /__| | ___ ___  _ __ ___   ___  | |_ ___  {c}
+   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \ {y}
+    \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) |{m}
+     \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/ {c}
+  {w}                                                     
+'''
+tic_tac_toe = f'''{c}
+  _______ _       {y} _______          {m} _______         {c}
+ |__   __(_)      {y}|__   __|         {m}|__   __|        {c}
+    | |   _  ___  {y}   | | __ _  ___  {m}   | | ___   ___ {c}
+    | |  | |/ __| {y}   | |/ _` |/ __| {m}   | |/ _ \ / _ \{c} 
+    | |  | | (__  {y}   | | (_| | (__  {m}   | | (_) |  __/{c}
+    |_|  |_|\___| {y}   |_|\__,_|\___| {m}   |_|\___/ \___|{c}                                              
+ {w}                                                    
+'''
