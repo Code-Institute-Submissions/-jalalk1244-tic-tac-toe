@@ -69,11 +69,19 @@ board_side = f'{m}|{w}'
 x_player = f'{c}X{w}'
 o_player = f'{ly}O{w}'
 
+# The invalid input messages
+too_small_big_number = f'\n{r}You can only pick squares between 1-9. Please try again!{w}\n' 
+taken_square = f'\n{r}The square is already taken. Please choose another one!{w}\n'
+invalid_input = f'\n{r}Invalid input, please try again!{w}\n'
+
 messages = {
   'welcome': welcome_message,
   'TTT': tic_tac_toe,
   "board-line": board_line,
   'side-line': board_side,
   'x-letter': x_player,
-  'o-letter': o_player
+  'o-letter': o_player,
+  'not-in-range': too_small_big_number,
+  'square-taken': taken_square,
+  'not-alpha': invalid_input,
 }

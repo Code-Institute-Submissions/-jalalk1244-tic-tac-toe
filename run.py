@@ -44,7 +44,7 @@ class TicTacToe:
         Add the player move to the board if it is a valid move
         Remove the square from the avaible moves
         '''
-        turn = [messages['x-letter'] if self.current_letter == messages['x-letter'] else messages['x-letter']]
+        # turn = [messages['x-letter'] if self.current_letter == messages['x-letter'] else messages['x-letter']]
 
         if move >= 1 and move <= 3:
             self.board[0][move-1] = self.current_letter
@@ -54,8 +54,8 @@ class TicTacToe:
             self.board[2][move-7] = self.current_letter
         del self.available_moves()[move - 1]
 
-        print(f'{self.current_letter} has moved to square {move}\n')
-        print(f"It is {turn[0]}'s turn")
+        # print(f'{self.current_letter} has moved to square {move}\n')
+        # print(f"It is {turn[0]}'s turn")
 
     def check_for_win(self):
         '''

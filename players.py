@@ -3,6 +3,7 @@ The module with the player classes
 '''
 
 import random
+from visuals import messages
 
 
 class ComputerPlayer:
@@ -41,9 +42,9 @@ class UserPlayer:
             try:
                 player_move = int(picked_square)
                 if player_move not in range(1, 10):
-                    print('You can only pick squares between 1-9. Please try again!')
+                    print(messages['not-in-range'])
                 elif moves[player_move - 1] != ' ':
-                    print('The square is already taken, choose another one.')
+                    print(messages['square-taken'])
                 else:
                     moves.insert(player_move - 1, 'X')
                     game.available_squares.remove(player_move)
@@ -51,5 +52,5 @@ class UserPlayer:
                     # print(f'\nIt is {turn[0]}:s turn')
                     is_square_valid = True
             except ValueError:
-                print('Invalid input, please try again!')
+                print(messages['not-alpha'])
         return player_move
