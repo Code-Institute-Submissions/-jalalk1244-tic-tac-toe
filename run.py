@@ -94,7 +94,7 @@ class TicTacToe:
         if winner != None:
             self.print_board()
             print(f'{gb}\n{winner} has won!{bb}')
-            game_running = False
+            self.play_again()
 
     def change_player(self):
         '''
@@ -113,6 +113,11 @@ class TicTacToe:
 
 
     def play_again(self):
+        '''
+        Checks if the user wants to play again and
+        resets the game board if the answer is yes or
+        exits the game if the answer is no
+        '''
         global game_running
         is_answer_valid = False
         while is_answer_valid == False:
