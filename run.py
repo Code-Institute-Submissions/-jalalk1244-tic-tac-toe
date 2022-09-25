@@ -2,6 +2,7 @@
 The module that runs the program
 '''
 from players import ComputerPlayer, UserPlayer
+from visuals import welcome_message, tic_tac_toe
 
 
 class TicTacToe:
@@ -118,6 +119,11 @@ game_running = True
 
 
 def main():
+    # Print the welcome header
+    print(welcome_message)
+    print(tic_tac_toe)
+
+    # Start the game
     t = TicTacToe()
     while (' ' in t.board[0] or ' ' in t.board[1] or ' ' in t.board[2]) and game_running:
         t.print_board()

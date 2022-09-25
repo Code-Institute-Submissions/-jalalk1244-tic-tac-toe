@@ -8,9 +8,7 @@ The COLORS dictionary and color_text function was taken from:
 github name: richardbwest
 Date: 2022-09-25
 Title of program/source code: demo1.py
-Web address: https://gist.github.com/richardbwest/17674f84961e975d47cf106da9728dd2'''
-
-os.system("cls")  # use this for windows. change to os.system("clear") for linux
+Web address: https://gist.github.com/richardbwest/17674f84961e975d47cf106da9728dd2'''   
 
 COLORS = {
     "black": "\u001b[30;1m",
@@ -40,12 +38,12 @@ y = COLORS["yellow"]
 w = COLORS["white"]
 
 welcome_message = f'''{c}
- __          __  _                            _        {y}
- \ \        / / | |                          | |       {m}
-  \ \  /\  / /__| | ___ ___  _ __ ___   ___  | |_ ___  {c}
-   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \ {y}
-    \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) |{m}
-     \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/ {c}
+ __          __  _                               _        {y}
+ \ \        / / | |                             | |       {m}
+  \ \  /\  / /__| | ___ ___  _ __ ___   ___     | |_ ___  {c}
+   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \    | __/ _ \ {y}
+    \  /\  /  __/ | (_| (_) | | | | | |  __/    | || (_) |{m}
+     \/  \/ \___|_|\___\___/|_| |_| |_|\___|     \__\___/ {c}
   {w}                                                     
 '''
 tic_tac_toe = f'''{c}
