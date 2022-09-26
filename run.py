@@ -1,5 +1,5 @@
 '''
-The module that runs the program
+The module with the game class and the main function that runs the game
 '''
 from players import ComputerPlayer, UserPlayer
 from visuals import messages, cb, yb, bb, r, w, gb
@@ -18,7 +18,7 @@ class TicTacToe:
         self.current_letter = messages['x-letter']
         self. available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.level = None
-        self.score = {'x': 0, 'o': 0}     
+        self.score = {'x': 0, 'o': 0}
 
     def print_board(self):
         '''
@@ -28,7 +28,8 @@ class TicTacToe:
             print(messages['board-line'])
             print(messages['side-line'], end='')
             for column in range(self.columns):
-                print('', self.board[row][column], end=f' {messages["side-line"]}')
+                print('', self.board[row][column],
+                      end=f' {messages["side-line"]}')
         print(messages['board-line'])
 
     def available_moves(self):
@@ -47,7 +48,6 @@ class TicTacToe:
         Add the player move to the board if it is a valid move
         Remove the square from the avaible moves
         '''
-        # turn = [messages['x-letter'] if self.current_letter == messages['x-letter'] else messages['x-letter']]
 
         if move >= 1 and move <= 3:
             self.board[0][move-1] = self.current_letter
@@ -67,8 +67,7 @@ class TicTacToe:
         - vertically
         - Diagonally
         '''
-        global game_running
-        # self.winner = None
+
         vertical_win_row = [[], [], []]
         diagonal_win = [[], [], []]
         j = 2
@@ -99,7 +98,7 @@ class TicTacToe:
         elif self.winner == messages['o-letter']:
             self.score['o'] += 1
 
-        if self.winner != None:
+        if self.winner is not None:
             background = cb if self.winner == messages['x-letter'] else yb
             self.print_board()
             print(f'{background}\n{self.winner} has won!{bb}')
@@ -123,7 +122,7 @@ class TicTacToe:
         '''
 
         flat_board = sum(self.board, [])
-        if ' ' not in flat_board and self.winner == None:
+        if ' ' not in flat_board and self.winner is None:
             self.print_board()
             print(f'{gb}It is a tie!{bb}')
             print('Score:')
@@ -138,47 +137,48 @@ class TicTacToe:
         resets the game board if the answer is yes or
         exits the game if the answer is no
         '''
-        global game_running
+        global GAME_RUNNING
         is_answer_valid = False
-        while is_answer_valid == False:
+        while is_answer_valid is False:
             answer = input('\nDo you want to play again? (yes/no): ').lower()
             if answer == 'yes':
                 # Reset the game board
                 is_answer_valid = True
-                game_running = True
+                GAME_RUNNING = True
                 for i in range(3):
                     for j in range(3):
                         self.board[i][j] = ' '
                 self.available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-                # Ask the user if they want to change the level after every game
+                # Ask the user if they want to change the level
                 level_change = None
                 while level_change not in ['yes', 'no']:
-                    level_change = input('\nDo you want to change the difficulty? (yes/no):\n').lower()
+                    level_change = input('\nDo you want to change the '
+                                         'difficulty? (yes/no):\n').lower()
                     if level_change not in ['yes', 'no']:
                         print(f'{r}Invalid input. Enter "yes" or "no".\n{w}')
                     elif level_change == 'yes':
                         self.level_choice()
-                
+
                 print('\n---------------')
                 print(f'    {messages["new-game"]}')
                 print('---------------')
             elif answer == 'no':
                 is_answer_valid = True
-                game_running = False
+                GAME_RUNNING = False
             else:
                 is_answer_valid = False
                 print(f'{r}Invalid input Enter "yes" or "no"{w}\n')
-    
 
     def level_choice(self):
         '''
         Get the difficulty level the player wants to play
         '''
         is_level_valid = False
-        while is_level_valid == False:
+        while is_level_valid is False:
             try:
-                self.level = int(input('\nWhat level do you want to play?\n1. Easy\n2. Medium\n'))
+                self.level = int(input('\nWhat level do you want to play?\n'
+                                       '1. Easy\n2. Medium\n'))
                 if self.level not in [1, 2]:
                     is_level_valid = False
                     raise ValueError
@@ -187,12 +187,16 @@ class TicTacToe:
             except ValueError:
                 print(f'{r}Invalid input. Enter from the options above.{w}')
 
-game_running = True
+
+GAME_RUNNING = True
 
 
 def main():
+    '''
+    The function that runs the game
+    '''
     # Start the game
-    t = TicTacToe()
+    game = TicTacToe()
 
     # Print the welcome header
     print(messages['welcome'])
@@ -200,36 +204,37 @@ def main():
     print(messages['rules-info'])
 
     # Get the difficulty level
-    t.level_choice()
+    game.level_choice()
 
-    while (t.winner == None) and game_running:
-        t.print_board()
-        moves = t.available_moves()
-        user_move = UserPlayer().get_valid_user_move(moves, t)
-        t.append_move_to_board(user_move)
-        t.check_for_win()
-        t.check_for_tie()
-        if t.winner != None:
-            t.winner = None
+    while (game.winner is None) and GAME_RUNNING:
+        game.print_board()
+        moves = game.available_moves()
+        user_move = UserPlayer().get_valid_user_move(moves, game)
+        game.append_move_to_board(user_move)
+        game.check_for_win()
+        game.check_for_tie()
+        if game.winner is not None:
+            game.winner = None
             continue
-        t.change_player()
+        game.change_player()
         # Change the randomness of the computer choice based on the user input
-        if t.level == 1:
-            cpu_move = ComputerPlayer().get_valid_computer_move(t)
-        elif t.level == 2:
-            cpu_move = ComputerPlayer().get_valid_medium_computer_move(t)
+        if game.level == 1:
+            cpu_move = ComputerPlayer().get_valid_computer_move(game)
+        elif game.level == 2:
+            cpu_move = ComputerPlayer().get_valid_medium_computer_move(game)
 
+        # This is for when all squares are taken and X makes the last move
         try:
-            t.append_move_to_board(cpu_move)
+            game.append_move_to_board(cpu_move)
         except TypeError:
-            print()  # This is for when all squares are taken and X makes the last move
-        t.check_for_win()
-        t.check_for_tie()
-        if t.winner != None:
-            t.winner = None
-            t.change_player()
+            print()
+        game.check_for_win()
+        game.check_for_tie()
+        if game.winner is not None:
+            game.winner = None
+            game.change_player()
             continue
-        t.change_player()
+        game.change_player()
 
 
 main()
