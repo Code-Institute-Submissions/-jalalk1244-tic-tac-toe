@@ -38,6 +38,32 @@ class ComputerPlayer:
                                 [4, 5, 6],
                                 [7, 8, 9]]
 
+        # If in any of the winnig combinations, 2 of them is taken choose the third one
+        # i.e  if one and 3 is x/o choose return 2
+        for way in possible_ways_to_win:
+            if (flat_board[way[0] - 1] == flat_board[way[1] - 1]) and flat_board[way[0] - 1] != ' ':
+                if way[2] in game.available_squares:
+                    game.available_squares.remove(way[2])
+                    pc = way[2]
+                    return pc
+            elif (flat_board[way[0] - 1] == flat_board[way[2] - 1]) and flat_board[way[0] - 1] != ' ':
+                if way[1] in game.available_squares:
+                    game.available_squares.remove(way[1])
+                    pc = way[1]
+                    return pc
+            elif (flat_board[way[1] - 1] == flat_board[way[2] - 1]) and flat_board[way[1] - 1] != ' ':
+                if way[0] in game.available_squares:
+                    game.available_squares.remove(way[0])
+                    pc = way[0]
+                    return pc
+            elif flat_board[8] == ' ' or flat_board[0] == ' ' or flat_board[6] == ' ' or flat_board[2] == ' ':
+                pc = 9 if flat_board[8] == ' ' else 7 if flat_board[6] == ' ' else 3 if flat_board[2] == ' ' else 1 
+                game.available_squares.remove(pc)
+                return pc 
+            else:
+                pc = random.choice(game.available_squares)
+                game.available_squares.remove(pc)       
+                return pc
 
 class UserPlayer:
     '''
