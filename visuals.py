@@ -43,6 +43,8 @@ w = COLORS["white"]
 b = COLORS['blue']
 gb = COLORS['green-background']
 bb = COLORS['black-background']
+cb = COLORS['cyan-background']
+yb = COLORS['yellow-background']
 bold = COLORS["bold"]
 
 welcome_message = f'''{c}

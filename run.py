@@ -2,7 +2,7 @@
 The module that runs the program
 '''
 from players import ComputerPlayer, UserPlayer
-from visuals import messages, gb, bb
+from visuals import messages, cb, yb, bb
 
 
 class TicTacToe:
@@ -93,8 +93,9 @@ class TicTacToe:
                 break
 
         if self.winner != None:
+            background = cb if self.winner == messages['x-letter'] else yb
             self.print_board()
-            print(f'{gb}\n{self.winner} has won!{bb}')
+            print(f'{background}\n{self.winner} has won!{bb}')
             self.play_again()
 
     def change_player(self):
