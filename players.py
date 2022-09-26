@@ -20,6 +20,23 @@ class ComputerPlayer:
             return pc
         except IndexError:
             print()
+    
+    def get_valid_medium_computer_move(self, game):
+        '''
+        Reduces the randomness of the computer choice
+        '''
+
+        flat_board = sum(game.board, [])
+
+        # All the possible winning combinations in tic tac toe
+        possible_ways_to_win = [[1, 2, 3],
+                                [1, 4, 7],
+                                [1, 5, 9],
+                                [2, 5, 8],
+                                [3, 6, 9],
+                                [3, 5, 7],
+                                [4, 5, 6],
+                                [7, 8, 9]]
 
 
 class UserPlayer:
