@@ -2,7 +2,7 @@
 The module that runs the program
 '''
 from players import ComputerPlayer, UserPlayer
-from visuals import messages, cb, yb, bb, r, w
+from visuals import messages, cb, yb, bb, r, w, gb
 
 
 class TicTacToe:
@@ -97,15 +97,15 @@ class TicTacToe:
         if self.winner == messages['x-letter']:
             self.score['x'] += 1
         elif self.winner == messages['o-letter']:
-            self.score['O'] += 1
+            self.score['o'] += 1
 
         if self.winner != None:
             background = cb if self.winner == messages['x-letter'] else yb
             self.print_board()
-            print('Score:')
+            print(f'{background}\n{self.winner} has won!{bb}')
+            print('\nScore:')
             print(f'{messages["x-letter"]} - {self.score["x"]}')
             print(f'{messages["o-letter"]} - {self.score["o"]}')
-            print(f'{background}\n{self.winner} has won!{bb}')
             self.play_again()
 
     def change_player(self):
@@ -118,11 +118,19 @@ class TicTacToe:
             self.current_letter = messages['x-letter']
 
     def check_for_tie(self):
-        global game_running
-        if (' ' not in self.board[0] and ' ' not in self.board[1] and ' ' not in self.board[2]) and not self.check_for_win():
-            print('It is a tie!')
-            game_running = False
+        '''
+        Checks if there is a tie
+        '''
 
+        flat_board = sum(self.board, [])
+        if ' ' not in flat_board and self.winner == None:
+            self.print_board()
+            print(f'{gb}It is a tie!{bb}')
+            print('Score:')
+            print(f'{messages["x-letter"]} - {self.score["x"]}')
+            print(f'{messages["o-letter"]} - {self.score["o"]}')
+            self.winner = 'draw'
+            self.play_again()
 
     def play_again(self):
         '''
@@ -133,7 +141,7 @@ class TicTacToe:
         global game_running
         is_answer_valid = False
         while is_answer_valid == False:
-            answer = input('Do you want to play again? (yes/no): ').lower()
+            answer = input('\nDo you want to play again? (yes/no): ').lower()
             if answer == 'yes':
                 # Reset the game board
                 is_answer_valid = True
@@ -194,12 +202,13 @@ def main():
     # Get the difficulty level
     t.level_choice()
 
-    while (' ' in t.board[0] or ' ' in t.board[1] or ' ' in t.board[2]) and game_running:
+    while (t.winner == None) and game_running:
         t.print_board()
         moves = t.available_moves()
         user_move = UserPlayer().get_valid_user_move(moves, t)
         t.append_move_to_board(user_move)
         t.check_for_win()
+        t.check_for_tie()
         if t.winner != None:
             t.winner = None
             continue
@@ -215,6 +224,7 @@ def main():
         except TypeError:
             print()  # This is for when all squares are taken and X makes the last move
         t.check_for_win()
+        t.check_for_tie()
         if t.winner != None:
             t.winner = None
             t.change_player()
