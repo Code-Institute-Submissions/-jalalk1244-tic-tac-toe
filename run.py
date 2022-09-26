@@ -17,6 +17,7 @@ class TicTacToe:
         self.winner = None
         self.current_letter = messages['x-letter']
         self. available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        self.level = None
 
     def print_board(self):
         '''
@@ -137,18 +138,34 @@ class TicTacToe:
             else:
                 is_answer_valid = False
                 print('Please enter "yes" or "no"')
+    
 
+    def level_choice(self):
+        is_level_valid = False
+        while is_level_valid == False:
+            try:
+                self.level = int(input('\nWhat level do you want to play?\n1. Easy\n2. Medium\n'))
+                if self.level not in [1, 2]:
+                    is_level_valid = False
+                    raise ValueError
+                else:
+                    is_level_valid = True
+            except ValueError:
+                print('Invalid input try again')
 
 game_running = True
 
 
 def main():
+    # Start the game
+    t = TicTacToe()
+
     # Print the welcome header
     print(messages['welcome'])
     print(messages['TTT'])
 
-    # Start the game
-    t = TicTacToe()
+    t.level_choice()
+
     while (' ' in t.board[0] or ' ' in t.board[1] or ' ' in t.board[2]) and game_running:
         t.print_board()
         moves = t.available_moves()
@@ -159,7 +176,12 @@ def main():
             t.winner = None
             continue
         t.change_player()
-        cpu_move = ComputerPlayer().get_valid_computer_move(t)
+        # Change the randomness of the computer choice based on the user input
+        if t.level == 1:
+            cpu_move = ComputerPlayer().get_valid_computer_move(t)
+        elif t.level == 2:
+            cpu_move = ComputerPlayer().get_valid_medium_computer_move(t)
+
         try:
             t.append_move_to_board(cpu_move)
         except TypeError:
