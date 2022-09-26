@@ -18,6 +18,7 @@ class TicTacToe:
         self.current_letter = messages['x-letter']
         self. available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.level = None
+        self.score = {'x': 0, 'o': 0}     
 
     def print_board(self):
         '''
@@ -92,10 +93,18 @@ class TicTacToe:
             elif diagonal_win[i].count(self.current_letter) == 3:
                 self.winner = self.current_letter
                 break
+        # Increment the score
+        if self.winner == messages['x-letter']:
+            self.score['x'] += 1
+        elif self.winner == messages['o-letter']:
+            self.score['O'] += 1
 
         if self.winner != None:
             background = cb if self.winner == messages['x-letter'] else yb
             self.print_board()
+            print('Score:')
+            print(f'{messages["x-letter"]} - {self.score["x"]}')
+            print(f'{messages["o-letter"]} - {self.score["o"]}')
             print(f'{background}\n{self.winner} has won!{bb}')
             self.play_again()
 
@@ -137,7 +146,7 @@ class TicTacToe:
                 # Ask the user if they want to change the level after every game
                 level_change = None
                 while level_change not in ['yes', 'no']:
-                    level_change = input('Do you want to change the difficulty? (yes/no):\n').lower()
+                    level_change = input('\nDo you want to change the difficulty? (yes/no):\n').lower()
                     if level_change not in ['yes', 'no']:
                         print(f'{r}Invalid input. Enter "yes" or "no".\n{w}')
                     elif level_change == 'yes':
