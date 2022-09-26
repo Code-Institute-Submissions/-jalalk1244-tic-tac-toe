@@ -98,6 +98,7 @@ class TicTacToe:
         elif self.winner == messages['o-letter']:
             self.score['o'] += 1
 
+        # When there is winner
         if self.winner is not None:
             background = cb if self.winner == messages['x-letter'] else yb
             self.print_board()
@@ -166,6 +167,7 @@ class TicTacToe:
             elif answer == 'no':
                 is_answer_valid = True
                 GAME_RUNNING = False
+                print('\nThank you for playing. Bye!\n')
             else:
                 is_answer_valid = False
                 print(f'{r}Invalid input Enter "yes" or "no"{w}\n')

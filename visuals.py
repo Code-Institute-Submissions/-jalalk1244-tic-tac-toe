@@ -20,7 +20,7 @@ COLORS = {
     "cyan": "\u001b[36m",
     "white": "\u001b[37m",
     "yellow-background": "\u001b[43m",
-    "black-background":"\u001b[0m",
+    "black-background": "\u001b[0m",
     "cyan-background": "\u001b[46;1m",
     'green-background': '\u001b[42m',
     "bold": "\u001b[1m"
@@ -31,6 +31,7 @@ def color_text(text):
     for color in COLORS:
         text = text.replace("[[" + color + "]]", COLORS[color])
     return text
+
 
 # Representing colors with thier firsrt letter
 r = COLORS["red"]
