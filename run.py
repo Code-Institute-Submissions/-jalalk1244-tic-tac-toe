@@ -165,6 +165,10 @@ def main():
         except TypeError:
             print()  # This is for when all squares are taken and X makes the last move
         t.check_for_win()
+        if t.winner != None:
+            t.winner = None
+            t.change_player()
+            continue
         t.change_player()
 
 
