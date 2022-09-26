@@ -126,12 +126,22 @@ class TicTacToe:
         while is_answer_valid == False:
             answer = input('Do you want to play again? (yes/no): ').lower()
             if answer == 'yes':
+                # Reset the game board
                 is_answer_valid = True
                 game_running = True
                 for i in range(3):
                     for j in range(3):
                         self.board[i][j] = ' '
                 self.available_squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+                # Ask the user if they want to change the level after every game
+                level_change = None
+                while level_change not in ['yes', 'no']:
+                    level_change = input('Do you want to change the difficulty? (yes/no):\n').lower()
+                    if level_change not in ['yes', 'no']:
+                        print('Invalid input. Enter "yes" or "no". Make this red!!!\n')
+                    elif level_change == 'yes':
+                        self.level_choice()
             elif answer == 'no':
                 is_answer_valid = True
                 game_running = False
@@ -141,6 +151,9 @@ class TicTacToe:
     
 
     def level_choice(self):
+        '''
+        Get the difficulty level the player wants to play
+        '''
         is_level_valid = False
         while is_level_valid == False:
             try:
