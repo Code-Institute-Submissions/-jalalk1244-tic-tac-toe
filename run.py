@@ -2,7 +2,7 @@
 The module that runs the program
 '''
 from players import ComputerPlayer, UserPlayer
-from visuals import messages, cb, yb, bb
+from visuals import messages, cb, yb, bb, r, w
 
 
 class TicTacToe:
@@ -139,15 +139,19 @@ class TicTacToe:
                 while level_change not in ['yes', 'no']:
                     level_change = input('Do you want to change the difficulty? (yes/no):\n').lower()
                     if level_change not in ['yes', 'no']:
-                        print('Invalid input. Enter "yes" or "no". Make this red!!!\n')
+                        print(f'{r}Invalid input. Enter "yes" or "no".\n{w}')
                     elif level_change == 'yes':
                         self.level_choice()
+                
+                print('\n---------------')
+                print(f'    {messages["new-game"]}')
+                print('---------------')
             elif answer == 'no':
                 is_answer_valid = True
                 game_running = False
             else:
                 is_answer_valid = False
-                print('Please enter "yes" or "no"')
+                print(f'{r}Invalid input Enter "yes" or "no"{w}\n')
     
 
     def level_choice(self):
@@ -164,7 +168,7 @@ class TicTacToe:
                 else:
                     is_level_valid = True
             except ValueError:
-                print('Invalid input try again')
+                print(f'{r}Invalid input. Enter from the options above.{w}')
 
 game_running = True
 
@@ -176,7 +180,9 @@ def main():
     # Print the welcome header
     print(messages['welcome'])
     print(messages['TTT'])
+    print(messages['rules-info'])
 
+    # Get the difficulty level
     t.level_choice()
 
     while (' ' in t.board[0] or ' ' in t.board[1] or ' ' in t.board[2]) and game_running:

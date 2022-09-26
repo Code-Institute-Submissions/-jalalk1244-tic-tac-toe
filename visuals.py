@@ -79,6 +79,16 @@ too_small_big_number = f'\n{r}You can only pick squares between 1-9. Please try 
 taken_square = f'\n{r}The square is already taken. Please choose another one!{w}\n'
 invalid_input = f'\n{r}Invalid input, please try again!{w}\n'
 
+rules = f'''
+{bold}How to play{w}
+1. You choose a square between 1-9 from the available ones.
+2. You are {c}X{w}, the computer  is {ly}O{w}. Players take turns putting their marks in empty squares.
+3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.
+4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
+'''
+
+new_game = f'{y}Ne{m}w Ga{c}me{w}'
+
 messages = {
   'welcome': welcome_message,
   'TTT': tic_tac_toe,
@@ -89,4 +99,6 @@ messages = {
   'not-in-range': too_small_big_number,
   'square-taken': taken_square,
   'not-alpha': invalid_input,
+  'rules-info': rules,
+  'new-game': new_game,
 }
