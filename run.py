@@ -155,9 +155,9 @@ class TicTacToe:
                 level_change = None
                 while level_change not in ['yes', 'no']:
                     level_change = input('\nDo you want to change the '
-                                         'difficulty? (yes/no):\n').lower()
+                                         'difficulty? (yes/no):').lower()
                     if level_change not in ['yes', 'no']:
-                        print(f'{r}Invalid input. Enter "yes" or "no".\n{w}')
+                        print(f'\n{r}Invalid input. Enter "yes" or "no".\n{w}')
                     elif level_change == 'yes':
                         self.level_choice()
 
@@ -170,7 +170,7 @@ class TicTacToe:
                 print('\nThank you for playing. Bye!\n')
             else:
                 is_answer_valid = False
-                print(f'{r}Invalid input Enter "yes" or "no"{w}\n')
+                print(f'\n{r}Invalid input Enter "yes" or "no"{w}\n')
 
     def level_choice(self):
         '''
