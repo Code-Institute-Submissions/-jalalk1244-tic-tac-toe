@@ -16,8 +16,9 @@
     <summary><strong>Welcome Header:</strong></summary>
     <img src="./assets/images/welcome-message.png" alt="welcome message"/>
 </details>
+
 - The welcome message is large and clear to greet the users when they first load the game<br>
-- It was created with ASCII [Text Generator](http://patorjk.com/software/taag/#p=display&f=Fun%20Face&t=daxzxczxxz).
+- It was created with [ASCII Text Generator](http://patorjk.com/software/taag/#p=display&f=Fun%20Face&t=daxzxczxxz).
 
 <details>
     <summary><strong>Rules Info:</strong></summary>
