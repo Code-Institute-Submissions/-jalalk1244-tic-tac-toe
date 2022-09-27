@@ -167,7 +167,7 @@ class TicTacToe:
             elif answer == 'no':
                 is_answer_valid = True
                 GAME_RUNNING = False
-                print('\n Thank you for playing. Bye!\n')
+                print(f'\n {messages["thank you"]}\n')
             else:
                 is_answer_valid = False
                 print(f'\n{r} Invalid input Enter "yes" or "no"{w}\n')
