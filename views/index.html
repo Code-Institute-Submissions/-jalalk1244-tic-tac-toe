@@ -1,6 +1,11 @@
-<body>
+<body style="
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-image: linear-gradient(to right, cyan , yellow, magenta );">
     <button onclick="window.location.reload()">Run Program</button>
-    <div id="terminal" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)"></div>
+    <div id="terminal"></div>
 
     <script>
         var term = new Terminal({
