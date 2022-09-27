@@ -9,6 +9,8 @@
     2. You are X, the computer  is O. You take turns with the computer putting marks in empty squares.
     3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner and gets a point.
     4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
+
+Live link to the deployed app: https://tictac--toe.herokuapp.com/ 
 <hr>
 
 ### Features
@@ -141,8 +143,6 @@ Every file was examined using the built-in pep8 validator in "gitpod." There wer
 8. Go to deploy and connect to the github repository
 7. Select "Enable Automatic Deploys" and click '¨Deploy Branch'
 
-Live link to the deployed app: https://tictac--toe.herokuapp.com/ 
-
 <hr>
 
 ### Credits
@@ -152,3 +152,4 @@ Live link to the deployed app: https://tictac--toe.herokuapp.com/
 
 - Media
     * The flowchart was created using [Lucid](https://lucid.app/documents#/dashboard?folder_id=home)
+    * Colors were added from: https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html 
