@@ -187,7 +187,7 @@ class TicTacToe:
                 else:
                     is_level_valid = True
             except ValueError:
-                print(f'{r}Invalid input. Enter from the options above.{w}')
+                print(f'\n{r}Invalid input. Enter from the options above.{w}')
 
 
 GAME_RUNNING = True
