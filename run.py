@@ -102,8 +102,8 @@ class TicTacToe:
         if self.winner is not None:
             background = cb if self.winner == messages['x-letter'] else yb
             self.print_board()
-            print(f'{background}\n {self.winner} has won!{bb}{w}')
-            print('\nScore:')
+            print(f'{background}\n {self.winner} has won!{bb}')
+            print(f'\n{w}Score:')
             print(f' {messages["x-letter"]} - {self.score["x"]}')
             print(f' {messages["o-letter"]} - {self.score["o"]}')
             self.play_again()
@@ -155,7 +155,7 @@ class TicTacToe:
                 level_change = None
                 while level_change not in ['yes', 'no']:
                     level_change = input('\n Do you want to change the '
-                                         'difficulty? (yes/no):').lower()
+                                         'difficulty? (yes/no): ').lower()
                     if level_change not in ['yes', 'no']:
                         print(f'\n{r}Invalid input. Enter "yes" or "no".\n{w}')
                     elif level_change == 'yes':
