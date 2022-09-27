@@ -131,8 +131,17 @@ Every file was examined using the built-in pep8 validator in "gitpod." There wer
 <hr>
 
 ### Deployment
-1. 
-2. 
+1. Go to heroku.com
+2. Click the new button and select 'create new app'
+3. Enter an app name and select region
+4. Click 'create'
+5. Go to settings and add a config var with the key 'PORT' and value '8000'
+6. Add python buildpack
+7. Add nodejs buildpack
+8. Go to deploy and connect to the github repository
+7. Select "Enable Automatic Deploys" and click '¨Deploy Branch'
+
+Live link to the deployed app: https://tictac--toe.herokuapp.com/ 
 
 <hr>
 

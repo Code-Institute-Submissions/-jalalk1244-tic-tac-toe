@@ -126,7 +126,7 @@ class TicTacToe:
         if ' ' not in flat_board and self.winner is None:
             self.print_board()
             print(f'{gb} It is a tie!{bb}')
-            print('Score:')
+            print(' Score:')
             print(f' {messages["x-letter"]} - {self.score["x"]}')
             print(f' {messages["o-letter"]} - {self.score["o"]}')
             self.winner = 'draw'
@@ -163,7 +163,7 @@ class TicTacToe:
 
                 print('\n ---------------')
                 print(f'    {messages["new-game"]}')
-                print('---------------')
+                print(' ---------------')
             elif answer == 'no':
                 is_answer_valid = True
                 GAME_RUNNING = False
@@ -180,7 +180,7 @@ class TicTacToe:
         while is_level_valid is False:
             try:
                 self.level = int(input('\n What level do you want to play?\n'
-                                       '1. Easy\n2. Medium\n'))
+                                       ' 1. Easy\n 2. Medium\n '))
                 if self.level not in [1, 2]:
                     is_level_valid = False
                     raise ValueError
@@ -203,7 +203,7 @@ def main():
     # Print the welcome header
     print(messages['welcome'])
     print(messages['TTT'])
-    print( messages['rules-info'])
+    print(messages['rules-info'])
 
     # Get the difficulty level
     game.level_choice()
