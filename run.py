@@ -28,7 +28,7 @@ class TicTacToe:
             print(messages['board-line'])
             print(messages['side-line'], end='')
             for column in range(self.columns):
-                print('', self.board[row][column],
+                print(' ', self.board[row][column],
                       end=f' {messages["side-line"]}')
         print(messages['board-line'])
 
@@ -57,7 +57,7 @@ class TicTacToe:
             self.board[2][move-7] = self.current_letter
         del self.available_moves()[move - 1]
 
-        # print(f'{self.current_letter} has moved to square {move}\n')
+        # print(f' {self.current_letter} has moved to square {move}\n')
         # print(f"It is {turn[0]}'s turn")
 
     def check_for_win(self):
@@ -102,10 +102,10 @@ class TicTacToe:
         if self.winner is not None:
             background = cb if self.winner == messages['x-letter'] else yb
             self.print_board()
-            print(f'{background}\n{self.winner} has won!{bb}')
-            print('\nScore:')
-            print(f'{messages["x-letter"]} - {self.score["x"]}')
-            print(f'{messages["o-letter"]} - {self.score["o"]}')
+            print(f' {background}\n{self.winner} has won!{bb}{w}')
+            print(' \nScore:')
+            print(f' {messages["x-letter"]} - {self.score["x"]}')
+            print(f' {messages["o-letter"]} - {self.score["o"]}')
             self.play_again()
 
     def change_player(self):
@@ -125,10 +125,10 @@ class TicTacToe:
         flat_board = sum(self.board, [])
         if ' ' not in flat_board and self.winner is None:
             self.print_board()
-            print(f'{gb}It is a tie!{bb}')
-            print('Score:')
-            print(f'{messages["x-letter"]} - {self.score["x"]}')
-            print(f'{messages["o-letter"]} - {self.score["o"]}')
+            print(f' {gb}It is a tie!{bb}')
+            print(' Score:')
+            print(f' {messages["x-letter"]} - {self.score["x"]}')
+            print(f' {messages["o-letter"]} - {self.score["o"]}')
             self.winner = 'draw'
             self.play_again()
 
@@ -141,7 +141,7 @@ class TicTacToe:
         global GAME_RUNNING
         is_answer_valid = False
         while is_answer_valid is False:
-            answer = input('\nDo you want to play again? (yes/no): ').lower()
+            answer = input('\n Do you want to play again? (yes/no): ').lower()
             if answer == 'yes':
                 # Reset the game board
                 is_answer_valid = True
@@ -154,23 +154,23 @@ class TicTacToe:
                 # Ask the user if they want to change the level
                 level_change = None
                 while level_change not in ['yes', 'no']:
-                    level_change = input('\nDo you want to change the '
+                    level_change = input('\n Do you want to change the '
                                          'difficulty? (yes/no):').lower()
                     if level_change not in ['yes', 'no']:
                         print(f'\n{r}Invalid input. Enter "yes" or "no".\n{w}')
                     elif level_change == 'yes':
                         self.level_choice()
 
-                print('\n---------------')
-                print(f'    {messages["new-game"]}')
-                print('---------------')
+                print(' \n---------------')
+                print(f'     {messages["new-game"]}')
+                print(' ---------------')
             elif answer == 'no':
                 is_answer_valid = True
                 GAME_RUNNING = False
-                print('\nThank you for playing. Bye!\n')
+                print(' \nThank you for playing. Bye!\n')
             else:
                 is_answer_valid = False
-                print(f'\n{r}Invalid input Enter "yes" or "no"{w}\n')
+                print(f' \n{r}Invalid input Enter "yes" or "no"{w}\n')
 
     def level_choice(self):
         '''
@@ -179,7 +179,7 @@ class TicTacToe:
         is_level_valid = False
         while is_level_valid is False:
             try:
-                self.level = int(input('\nWhat level do you want to play?\n'
+                self.level = int(input('\n What level do you want to play?\n'
                                        '1. Easy\n2. Medium\n'))
                 if self.level not in [1, 2]:
                     is_level_valid = False
@@ -187,7 +187,7 @@ class TicTacToe:
                 else:
                     is_level_valid = True
             except ValueError:
-                print(f'\n{r}Invalid input. Enter from the options above.{w}')
+                print(f' \n{r}Invalid input. Enter from the options above.{w}')
 
 
 GAME_RUNNING = True

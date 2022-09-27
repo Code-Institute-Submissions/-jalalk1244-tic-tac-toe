@@ -2,10 +2,6 @@
 The module with the cisuals and game messages
 '''
 
-import os
-
-os.system("cls")
-
 '''
 The COLORS dictionary and color_text function was taken from:
 github name: richardbwest
