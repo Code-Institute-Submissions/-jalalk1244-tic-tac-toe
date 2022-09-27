@@ -18,9 +18,9 @@ COLORS = {
     "blue": "\u001b[34;1m",
     "magenta": "\u001b[35m",
     "cyan": "\u001b[36m",
-    "white": "\u001b[37m",
+    "white": "\u001b[0m",
     "yellow-background": "\u001b[43m",
-    "black-background": "\u001b[40;1m",
+    "black-background": "\u001b[0m",
     "cyan-background": "\u001b[46;1m",
     'green-background': '\u001b[42m',
     "bold": "\u001b[1m"
