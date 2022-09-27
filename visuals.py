@@ -2,6 +2,10 @@
 The module with the cisuals and game messages
 '''
 
+import os
+
+os.system("cls")
+
 '''
 The COLORS dictionary and color_text function was taken from:
 github name: richardbwest
@@ -18,7 +22,7 @@ COLORS = {
     "blue": "\u001b[34;1m",
     "magenta": "\u001b[35m",
     "cyan": "\u001b[36m",
-    "white": "\u001b[0m",
+    "white": "\u001b[37m",
     "yellow-background": "\u001b[43m",
     "black-background": "\u001b[0m",
     "cyan-background": "\u001b[46;1m",
